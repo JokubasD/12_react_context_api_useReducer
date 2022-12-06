@@ -1,0 +1,13 @@
+.main-header {
+  border-bottom: 1px solid #000;
+  margin-bottom: 1rem;
+}
+.nav-link {
+  background-color: rgb(226, 217, 217);
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+  display: inline-block;
+}
+.nav-link.active {
+  font-weight: bold;
+}
