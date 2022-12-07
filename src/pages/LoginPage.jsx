@@ -5,7 +5,7 @@ function LoginPage(props) {
     <div>
       <h1>Login Page</h1>
       <p>Please Login</p>
-      <LoginForm onLogin={props.onLogin}></LoginForm>
+      <LoginForm showDebug={props.showDebug}></LoginForm>
     </div>
   );
 }

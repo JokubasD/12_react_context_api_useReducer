@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import AuthContext from '../store/AuthContext';
 
 function Header(props) {
-  const isUserLoggedIn = props.isUserLoggedIn;
-  const userEmail = props.userEmail;
+  const ctx = useContext(AuthContext);
+  const isUserLoggedIn = ctx.isUserLoggedIn;
+  const userEmail = ctx.userEmail;
   return (
     <header className='main-header'>
       <nav>
@@ -26,7 +29,7 @@ function Header(props) {
         )}
         {isUserLoggedIn && (
           <Link className='nav-link' to={'/login'}>
-            <span onClick={props.onLogout}>Logout</span>
+            <span>Logout</span>
           </Link>
         )}
       </nav>

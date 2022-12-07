@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { useState } from 'react';
+import AuthContext from '../store/AuthContext';
 
 function LoginForm(props) {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const ctx = useContext(AuthContext);
+
   function formHandler(e) {
     e.preventDefault();
     const loginObj = {
@@ -11,10 +15,9 @@ function LoginForm(props) {
     };
     setEmailValue('');
     setPasswordValue('');
-    console.log('loginObj ===', loginObj);
-    props.onLogin(loginObj);
+    ctx.login(loginObj);
   }
-
+  const showDebug = props.showDebug ? true : false;
   return (
     <div>
       <h2>Login here</h2>
@@ -33,12 +36,16 @@ function LoginForm(props) {
         ></input>
         <button type='submit'>Login</button>
       </form>
-      <hr />
-      <h3>Debug values</h3>
-      <p>
-        email: {emailValue}
-        password: {passwordValue}
-      </p>
+      {showDebug && (
+        <>
+          <hr />
+          <h3>Debug values</h3>
+          <p>
+            email: {emailValue}
+            password: {passwordValue}
+          </p>
+        </>
+      )}
     </div>
   );
 }
